@@ -31,42 +31,59 @@ function writeToLog(
 
 function calculateResult(calculationType) {
   const enteredNumber = getUserNumberInput();
+  if (
+    calculationType !== "ADD" &&
+    calculationType !== "SUBTRACK" &&
+    calculationType !== "MULTIPLY" &&
+    calculationType !== "DIVIDE" ||
+    !enteredNumber
+  ) {
+    return;
+  }
+
+  // if (
+  //   calculationType === "ADD" ||
+  //   calculationType === "SUBTRACK" ||
+  //   calculationType === "MULTIPLY" ||
+  //   calculationType === "DIVIDE"
+  // ) {
+  // }
+
   const initialResult = currentResult;
   // 재사용이 가능한 코드를 작성하기 위함
-  let mathOperator
+  let mathOperator;
   if (calculationType === "ADD") {
     currentResult += enteredNumber;
-    mathOperator = '+'
-  } else {
+    mathOperator = "+";
+  } else if (calculationType === "SUBTRACK") {
     currentResult -= enteredNumber;
-    mathOperator = '-'
+    mathOperator = "-";
+  } else if (calculationType === "MULTIPLY") {
+    currentResult *= enteredNumber;
+    mathOperator = "*";
+  } else if (calculationType === "DIVIDE") {
+    currentResult /= enteredNumber;
+    mathOperator = "/";
   }
+
   createAndWriteOutput(mathOperator, initialResult, enteredNumber);
   writeToLog(calculationType, initialResult, enteredNumber, currentResult);
 }
 
 function add() {
-  calculateResult('ADD')
+  calculateResult("ADD");
 }
 
 function subtract() {
-  calculateResult('SUBTRACK')
+  calculateResult("SUBTRACK");
 }
 
 function multiply() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult *= enteredNumber;
-  createAndWriteOutput("*", initialResult, enteredNumber);
-  writeToLog("MULTIPLY", initialResult, enteredNumber, currentResult);
+  calculateResult("MULTIPLY");
 }
 
 function divide() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult /= enteredNumber;
-  createAndWriteOutput("/", initialResult, enteredNumber);
-  writeToLog("DIVIDE", initialResult, enteredNumber, currentResult);
+  calculateResult("DIVIDE");
 }
 
 addBtn.addEventListener("click", add);
