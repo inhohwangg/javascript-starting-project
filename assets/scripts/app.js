@@ -1,92 +1,32 @@
-const defaultResult = 0;
-let currentResult = defaultResult;
-let logEntries = [];
+//never change
+const ATTACK_VALUE = 10;
+const MONSTER_ATTACK_VALUE = 14;
 
-// Gets input from input field
-function getUserNumberInput() {
-  return parseInt(usrInput.value);
-}
+let chosenMaxLife = 100;
+let currentMonsterHealth = chosenMaxLife;
+let currentPlayerHealth = chosenMaxLife;
 
-// Generates and writes calculation log
-function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
-  const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
-  outputResult(currentResult, calcDescription); // from vendor file
-}
+adjustHealthBars(chosenMaxLife);
 
-function writeToLog(
-  operationIdentifier,
-  prevResult,
-  operationNumber,
-  newResult
-) {
-  const logEntry = {
-    operation: operationIdentifier,
-    prevResult: prevResult,
-    number: operationNumber,
-    result: newResult,
-  };
-  logEntries.push(logEntry);
-  console.log(logEntries);
-}
-
-function calculateResult(calculationType) {
-  const enteredNumber = getUserNumberInput();
-  if (
-    calculationType !== "ADD" &&
-    calculationType !== "SUBTRACK" &&
-    calculationType !== "MULTIPLY" &&
-    calculationType !== "DIVIDE" ||
-    !enteredNumber
-  ) {
-    return;
+function attackHandler() {
+  const damage = dealMonsterDamage(ATTACK_VALUE);
+  currentMonsterHealth -= damage;
+  const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
+  currentPlayerHealth -= playerDamage;
+  console.info(currentMonsterHealth, "MonsterHealth");
+  console.info(damage, "PlayerAttack");
+  if (damage) {
+    playerAttackHandler();
   }
-
-  // if (
-  //   calculationType === "ADD" ||
-  //   calculationType === "SUBTRACK" ||
-  //   calculationType === "MULTIPLY" ||
-  //   calculationType === "DIVIDE"
-  // ) {
-  // }
-
-  const initialResult = currentResult;
-  // 재사용이 가능한 코드를 작성하기 위함
-  let mathOperator;
-  if (calculationType === "ADD") {
-    currentResult += enteredNumber;
-    mathOperator = "+";
-  } else if (calculationType === "SUBTRACK") {
-    currentResult -= enteredNumber;
-    mathOperator = "-";
-  } else if (calculationType === "MULTIPLY") {
-    currentResult *= enteredNumber;
-    mathOperator = "*";
-  } else if (calculationType === "DIVIDE") {
-    currentResult /= enteredNumber;
-    mathOperator = "/";
+  if (currentMonsterHealth <= 0) {
+    alert("Player Win!");
   }
-
-  createAndWriteOutput(mathOperator, initialResult, enteredNumber);
-  writeToLog(calculationType, initialResult, enteredNumber, currentResult);
 }
 
-function add() {
-  calculateResult("ADD");
-}
+// 내가 만들어본 플레이어 공격 이벤트 함수
+// function playerAttackHandler() {
+//   const damage = dealPlayerDamage(ATTACK_VALUE);
+//   currentPlayerHealth -= damage;
+// }
 
-function subtract() {
-  calculateResult("SUBTRACK");
-}
-
-function multiply() {
-  calculateResult("MULTIPLY");
-}
-
-function divide() {
-  calculateResult("DIVIDE");
-}
-
-addBtn.addEventListener("click", add);
-subtractBtn.addEventListener("click", subtract);
-multiplyBtn.addEventListener("click", multiply);
-divideBtn.addEventListener("click", divide);
+attackBtn.addEventListener("click", attackHandler);
