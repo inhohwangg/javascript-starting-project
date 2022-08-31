@@ -15,11 +15,12 @@ function attackHandler() {
   currentPlayerHealth -= playerDamage;
   console.info(currentMonsterHealth, "MonsterHealth");
   console.info(damage, "PlayerAttack");
-  if (damage) {
-    playerAttackHandler();
-  }
-  if (currentMonsterHealth <= 0) {
+  if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
     alert("Player Win!");
+  } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
+    alert("Player Lost!");
+  } else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
+    alert("You have a draw!");
   }
 }
 
