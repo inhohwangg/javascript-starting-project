@@ -215,6 +215,28 @@ function healPlayerHandler() {
 }
 
 function printLogHandler() {
+  for (let i = 0; i < 3; i++) {
+    console.log("-------------");
+  }
+  // for (let i = 10; i > 0; i--) {
+  //   console.log(i)
+  // }
+  // for (let i = 0; i < battleLog.length; i++) {
+  //   console.log(battleLog[i])
+  // }
+  // 이방법은 오직 배열에서만 사용할 수 있다.
+  // for (const logEntry of battleLog) {
+  //   console.log(logEntry)
+  // }
+  let i = 0;
+  for (const logEntry of battleLog) {
+    console.log(`#${i}`);
+    for (const key in logEntry) {
+      console.log(key);
+      console.log(logEntry[key])
+    }
+    i++;
+  }
   console.log(battleLog);
 }
 
