@@ -1,21 +1,16 @@
-const addListenerBtn = document.getElementById("add-listener-btn");
-const clickableBtn = document.getElementById("clickable-btn");
-const messageInput = document.getElementById("click-message-input");
+const startGameBtn = document.getElementById('start-game-btn')
 
-let person = { name: "Max" };
-
-person = null;
-
-function printMessage() {
-  const value = messageInput.value;
-  console.log(value || "Click me!");
+function startGame() {
+  console.log('Game is start...')
 }
 
-function addListener() {
-  clickableBtn.addEventListener("click", function () {
-    const value = messageInput.value;
-    console.log(value || "Clicked me!");
-  });
+const person = {
+  name: 'Max',
+  greet : function greet() {
+    console.log('Hello there!')
+  }
 }
 
-addListenerBtn.addEventListener("click", addListener);
+person.greet()
+
+startGameBtn.addEventListener('click', startGame)
