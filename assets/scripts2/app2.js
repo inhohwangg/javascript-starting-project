@@ -12,5 +12,5 @@ const person = {
 }
 
 person.greet()
-
+// 객체에 대한 함수를 메서드라고 부른다
 startGameBtn.addEventListener('click', startGame)
