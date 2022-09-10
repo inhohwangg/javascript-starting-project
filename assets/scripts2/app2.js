@@ -13,7 +13,7 @@ function startGame() {
 
 // person.greet()
 // 객체에 대한 함수를 메서드라고 부른다
-
+// 함수는 객체이다
 console.dir(startGame)
 
 startGameBtn.addEventListener('click', startGame)
