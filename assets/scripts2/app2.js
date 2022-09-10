@@ -30,7 +30,7 @@ const getComputerChoice = () => {
   }
 }
 
-const getWinner = (cChoice, pChoice) => 
+const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE) => 
   cChoice === pChoice 
   ? RESULT_DRAW : cChoice === ROCK && pChoice === PAPER ||
   cChoice === PAPER && pChoice === SCISSORS || 
@@ -58,6 +58,20 @@ startGameBtn.addEventListener('click', () => {
   console.log('Game is Striting...')
   const playerChoice = getPlayerChoice()
   const computerChoice = getComputerChoice()
-  const winner = getWinner(computerChoice, playerChoice)
-  console.log(winner)
+  let winner
+  if (playerChoice) {
+    const winner = getWinner(computerChoice, playerChoice)  
+  } else {
+    winner = getWinner(computerChoice, playerChoice)
+  }
+  let message = `You picked ${playerChoice || DEFAULT_USER_CHOICE}, computer picked ${computerChoice}, therefore you had a draw.`
+  if (winner === RESULT_DRAW) {
+    message = message + 'had a draw'
+  } else if (winner === RESULT_PLAYER_WINS) {
+    message = message + 'won'
+  } else {
+    message = message + 'lost'
+  }
+  alert(message)
+  gameIsRunning = false
 })
