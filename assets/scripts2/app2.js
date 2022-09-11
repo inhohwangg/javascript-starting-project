@@ -77,9 +77,13 @@ startGameBtn.addEventListener('click', () => {
 })
 
 const sumUp = (a, b, ...numbers) => {
+  const vaildateNumber = (number)=> {
+    return isNaN(number) ? 0 : number
+  }
+
   let sum = 0;
   for (const num of numbers) {
-    sum += num
+    sum += vaildateNumber(num)
   }
   return sum
 }
