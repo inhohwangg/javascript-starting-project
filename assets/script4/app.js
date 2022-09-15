@@ -118,3 +118,20 @@ const filteredArray = prices.filter((price, idx, prices) => {
 });
 
 console.log(filteredArray);
+
+// let sum = 0;
+
+// prices.forEach((price)=> {
+//     sum += price
+// })
+
+// console.log(sum)
+
+const sum = prices.reduce((prevValue, curValue, curIndex, prices) => {
+  return prevValue + curValue;
+}, 0);
+
+const sumTest = prices.reduce((prevValue, curValue) => prevValue + curValue, 0);
+
+console.log(sum);
+console.log(sumTest)
