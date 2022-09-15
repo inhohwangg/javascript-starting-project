@@ -134,21 +134,36 @@ const sum = prices.reduce((prevValue, curValue, curIndex, prices) => {
 const sumTest = prices.reduce((prevValue, curValue) => prevValue + curValue, 0);
 
 console.log(sum);
-console.log(sumTest)
+console.log(sumTest);
 
 // 방법 1
-const orignalArray = [{price:10.99}, {price:5.99}, {price:29.99}]
-const transformedArray = orignalArray.map((obj)=>obj.price)
-const test = transformedArray.reduce((prevValue, curValue)=> prevValue + curValue, 0)
-console.log(transformedArray)
-console.log(test)
+const orignalArray = [{ price: 10.99 }, { price: 5.99 }, { price: 29.99 }];
+const transformedArray = orignalArray.map((obj) => obj.price);
+const test = transformedArray.reduce(
+  (prevValue, curValue) => prevValue + curValue,
+  0
+);
+console.log(transformedArray);
+console.log(test);
 
 // 방법 2
-const orignalArray1 = [{price:10.99}, {price:5.99}, {price:29.99}]
-const sum1 = orignalArray1.reduce((sumVal, curVal)=>sumVal+curVal.price, 0)
-console.log(sum1)
+const orignalArray1 = [{ price: 10.99 }, { price: 5.99 }, { price: 29.99 }];
+const sum1 = orignalArray1.reduce((sumVal, curVal) => sumVal + curVal.price, 0);
+console.log(sum1);
 
 // 방법 3
-const orignalArray2 = [{price:10.99}, {price:5.99}, {price:29.99}]
-const sum2 = orignalArray2.map((obj)=>obj.price).reduce((prevValue, curValue)=> prevValue+curValue, 0)
-console.log(sum2)
+const orignalArray2 = [{ price: 10.99 }, { price: 5.99 }, { price: 29.99 }];
+const sum2 = orignalArray2
+  .map((obj) => obj.price)
+  .reduce((prevValue, curValue) => prevValue + curValue, 0);
+console.log(sum2);
+
+const data = "new york;10.99;2000";
+
+const transformedData = data.split(";");
+transformedData[1] = +transformedData[1];
+console.log(transformedData);
+
+const nameFragements = ["Max", "Schwarz"];
+const name = nameFragements.join(' ');
+console.log(name)
