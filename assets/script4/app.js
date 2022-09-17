@@ -164,6 +164,11 @@ const transformedData = data.split(";");
 transformedData[1] = +transformedData[1];
 console.log(transformedData);
 
-const nameFragements = ["Max", "Schwarz"];
-const name = nameFragements.join(' ');
-console.log(name)
+const nameFragments = ["Max", "Schwarz"];
+const name = nameFragments.join(" ");
+console.log(name);
+
+const copiedNameFragments = [...nameFragments];
+
+nameFragments.push('Mr')
+console.log(nameFragments, copiedNameFragments);
