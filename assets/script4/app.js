@@ -164,7 +164,6 @@
 // transformedData[1] = +transformedData[1];
 // console.log(transformedData);
 
-<<<<<<< HEAD
 const nameFragments = ["Max", "Schwarz"];
 const name = nameFragments.join(" ");
 console.log(name);
@@ -173,29 +172,3 @@ const copiedNameFragments = [...nameFragments];
 
 nameFragments.push('Mr')
 console.log(nameFragments, copiedNameFragments);
-=======
-// const nameFragements = ["Max", "Schwarz"];
-// const name = nameFragements.join(' ');
-// console.log(name)
-
-// const copiedNameFragments = [...nameFragements];
-// nameFragements.push('Mr')
-// console.log(nameFragements, copiedNameFragments)
-
-// console.log(Math.min(...prices))
-
-// const persons = [{name : 'Max', age: 30, hobbies:[]}, {name: 'Manuel', age:31}]
-// const copiedPersons = persons.map(person=>({name: person.name, age:person.age, hobbies:[...person.hobbies]}))
-
-// persons.push({name: 'Anna', age:29})
-// persons[0].age = 31
-
-// console.log(persons, copiedPersons)
-
-const nameData = ['Max', 'Schwarz', 'Mr', 30]
-// const firstName = nameData[0]
-// const lastData = nameData[1]
-
-const [firstName, lastName, ...otherInfomation] = nameData
-console.log(firstName, lastName, otherInfomation)
->>>>>>> c2de6d7d8d745ed7cfedfeacd08315b80faf6916
