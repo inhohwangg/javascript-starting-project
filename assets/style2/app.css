@@ -1,22 +1,22 @@
-*{
+* {
     box-sizing: border-box;
-}
-
-html {
+  }
+  
+  html {
     font-family: sans-serif;
-}
-
-body {
+  }
+  
+  body {
     margin: 0;
-}
-
-label {
+  }
+  
+  label {
     font-weight: bold;
     display: block;
     color: #494949;
-}
-
-input {
+  }
+  
+  input {
     font: inherit;
     border: none;
     border-bottom: 2px solid #ccc;
@@ -24,14 +24,14 @@ input {
     width: 100%;
     display: block;
     margin: 1rem 0;
-}
-
-input:focus {
+  }
+  
+  input:focus {
     outline: none;
     border-color: #ff0062;
-}
-
-button {
+  }
+  
+  button {
     font: inherit;
     border: 1px solid #ff0062;
     color: white;
@@ -39,53 +39,54 @@ button {
     border-radius: 5px;
     background: #ff0062;
     cursor: pointer;
-}
-
-button:focus {
+  }
+  
+  button:focus {
     outline: none;
-}
-
-button:hover,
-button:active {
-    background: #ff0062;
-    border-color: #ff0062;
-}
-
-.card {
+  }
+  
+  button:hover,
+  button:active {
+    background: #ff3482;
+    border-color: #ff3482;
+  }
+  
+  .card {
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-}
-
-.inline-controls {
+  }
+  
+  .inline-controls {
     display: flex;
-}
-
-.control {
+  }
+  
+  .control {
     margin: 1rem;
-}
-
-#user-input,
-#movie-list,
-#filter {
+  }
+  
+  #user-input,
+  #movie-list,
+  #filter {
     width: 50rem;
     max-width: 90%;
     margin: 2rem auto;
-}
-
-#movie-list {
+  }
+  
+  #movie-list {
     display: none;
     list-style: none;
     padding: 1rem;
-}
-
-#movie-list.visible {
-    display: none;
-}
-
-#movie-list li {
+  }
+  
+  #movie-list.visible {
+    display: block;
+  }
+  
+  #movie-list li {
     margin: 1rem;
     color: #ff0062;
     font-weight: bold;
     font-size: 1.5rem;
-}
+  }
+  
