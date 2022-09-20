@@ -35,6 +35,8 @@ const productList = {
         `;
       prodList.append(prodEl);
     }
-    renderHook.append();
+    renderHook.append(prodList);
   },
 };
+
+productList.render()
