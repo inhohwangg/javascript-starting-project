@@ -17,6 +17,11 @@ class ProductItem {
     this.product = product;
   }
 
+  addToCart() {
+    console.log("Adding product to cart...");
+    console.log(this.product);
+  }
+
   render() {
     const prodEl = document.createElement("li");
     prodEl.className = "product-item";
@@ -31,7 +36,9 @@ class ProductItem {
             </div>
         </div>
         `;
-        return prodEl
+    const addCartButton = prodEl.querySelector("button");
+    addCartButton.addEventListener("click", this.addToCart.bind(this));
+    return prodEl;
   }
 }
 
@@ -58,8 +65,8 @@ class ProductList {
     const prodList = document.createElement("ul");
     prodList.className = "product-list";
     for (const prod of this.products) {
-      const productItem = new ProductItem(prod)
-      const prodEl = productItem.render()
+      const productItem = new ProductItem(prod);
+      const prodEl = productItem.render();
       prodList.append(prodEl);
     }
     renderHook.append(prodList);
