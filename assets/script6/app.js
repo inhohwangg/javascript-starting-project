@@ -38,7 +38,7 @@ class ProductItem {
   }
 
   addToCart() {
-    App.addProductToCart(this.product)
+    App.addProductToCart(this.product);
   }
 
   render() {
@@ -106,13 +106,15 @@ class Shop {
 }
 
 class App {
+  static cart;
+
   static init() {
     const shop = new Shop();
     shop.render();
-    this.cart = shop.cart
+    this.cart = shop.cart;
   }
   static addProductToCart(product) {
-    this.cart.addProduct(product)
+    this.cart.addProduct(product);
   }
 }
 
