@@ -1,8 +1,8 @@
 class Product {
-  title = "DEFAULT";
-  imageUrl;
-  description;
-  price;
+  // title = "DEFAULT";
+  // imageUrl;
+  // description;
+  // price;
 
   constructor(title, image, desc, price) {
     this.title = title;
@@ -12,21 +12,67 @@ class Product {
   }
 }
 
-class ShoppingCart {
-  item = [];
+class ElementAttribute {
+  constructor(attrName, attrValue) {
+    this.name = attrName;
+    this.value = attrValue;
+  }
+}
+
+class Component {
+  constructor(renderHookId) {
+    this.hookId = renderHookId;
+  }
+
+  createRootElement(tag, cssClasses, attributes) {
+    const rootElement = document.createElement(tag);
+    if (cssClasses) {
+      rootElement.className = cssClasses;
+    }
+    if (attributes && attributes.length > 0) {
+      for (const attr of attributes) {
+        rootElement.setAttribute(attr.name, attr.value);
+      }
+    }
+    document.getElementById(this.hookId).append(rootElement);
+    return this.rootElement;
+  }
+}
+
+class ShoppingCart extends Component {
+  items = [];
+
+  set cartItems(value) {
+    this.items = value;
+    this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed(
+      2
+    )}</h2>`;
+  }
+
+  get totalAmount() {
+    const sum = this.items.reduce(
+      (prevValue, curItem) => prevValue + curItem.price,
+      0
+    );
+    return sum;
+  }
+
+  constructor() {
+    super()
+  }
 
   addProduct(product) {
-    this.item.push(product);
-    this.totalOutput.innerHTML = `<h2>Total: \$${1}</h2>`;
+    const updatedItems = [...this.items];
+    updatedItems.push(product);
+    this.cartItems = updatedItems;
   }
 
   render() {
-    const cartEl = document.createElement("section");
+    const cartEl = this.createRootElement('section', 'cart')
     cartEl.innerHTML = `
       <h2>Total: \$${0}</h2>
       <button>Order Now!</button>
     `;
-    cartEl.className = "cart";
     this.totalOutput = cartEl.querySelector("h2");
     return cartEl;
   }
